@@ -1,0 +1,26 @@
+<div>
+  <div>Auto Correct :</div>
+  <textarea
+    data-test-id="textarea"
+    (keydown.space)="autoCrt($event)"
+    rows="4"
+    cols="50"
+  ></textarea>
+</div>
+
+<div style="margin: 50px 20px">
+  <div>Search Movie Titles</div>
+  <form (submit)="getMovies()">
+    <input placeholder="title" type="text" name="title" [(ngModel)]="title" />
+
+    <input name="pgNo" [(ngModel)]="pgNo" placeholder="page number" />
+    <button type="submit">search</button>
+  </form>
+</div>
+
+<div *ngIf="titles && titles.length > 0">
+  <div>List of Movies</div>
+  <ul>
+    <li *ngFor="let title of titles">{{ title }}</li>
+  </ul>
+</div>
